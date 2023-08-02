@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 
 import {
@@ -22,6 +22,11 @@ export class ProductsComponent {
   showProductDetail = false;
   productChosen: Product | null = null;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
+  @Output() loadMore = new EventEmitter();
+
+  onLoadMore() {
+    this.loadMore.emit();
+  }
 
   constructor(
     private storeService: StoreService,
@@ -96,10 +101,4 @@ export class ProductsComponent {
     }
   }
 
-  // loadMore() {
-  //   this.productsService.getAll(this.limit, this.offset).subscribe((data) => {
-  //     this.products = this.products.concat(data);
-  //     this.offset += this.limit;
-  //   });
-  // }
 }
