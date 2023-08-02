@@ -12,12 +12,17 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'category',
-    component: CategoryComponent
+    component: CategoryComponent,
   },
   {
     path: 'my-cart',
@@ -34,11 +39,11 @@ const routes: Routes = [
   {
     path: 'recovery',
     component: RecoveryComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
